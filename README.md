@@ -45,6 +45,18 @@ Fun Bus wants you to make their site more interactive. They are relying on you t
 	* [ ] `select`
 	* [ ] `dblclick`
 
+Used:
+	1. click
+	2. pointerenter
+	3. pointerleave
+	4.
+	5.
+	6.
+	7.
+	8.
+	9.
+	10.
+
 Using the 10 unique events, find ways to update the DOM in creative ways. For example you could change colors, animate objects, remove objects, etc.
 
 * [ ] Nest two similar events somewhere in the site and prevent the event propagation properly
