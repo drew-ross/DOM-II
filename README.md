@@ -49,9 +49,9 @@ Used:
 	1. click
 	2. pointerenter
 	3. pointerleave
-	4.
-	5.
-	6.
+	4. dragstart
+	5. dragend
+	6. scroll
 	7.
 	8.
 	9.
