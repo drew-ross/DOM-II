@@ -14,8 +14,11 @@ const header = qs('header');
 const navLinks = Array.from(qsa('.nav-link'));
 const paragraphs = Array.from(qsa('p'));
 const body = qs('body');
+const textInput = qs('#text-input');
+
 //Event callbacks
 const borderToggle = (event) => {
+    event.stopPropagation();
     event.target.classList.toggle('border-toggle');
 }
 
@@ -55,6 +58,7 @@ const scrollColor = (event) => {
         return scrolled;
     }
 }
+
 const keyPress = (event) => {
     paragraphs.forEach(item => {
         let content = '';
@@ -65,6 +69,14 @@ const keyPress = (event) => {
     })
 }
 
+const inputFocus = (event) => {
+    event.target.style.border = '5px solid purple';
+}
+
+const inputBlur = (event) => {
+    event.target.style.border = '5px solid green';
+}
+
 //Event listeners
 images.forEach((item) => { item.addEventListener('click', borderToggle) });
 images.forEach((item) => { item.addEventListener('dragstart', dragShadow) });
@@ -72,4 +84,10 @@ images.forEach((item) => { item.addEventListener('dragend', dragShadowOff) });
 header.addEventListener('pointerenter', headerBackground);
 header.addEventListener('pointerleave', headerBackgroundOff);
 document.addEventListener('scroll', scrollColor);
-document.addEventListener('keydown', keyPress)
+document.addEventListener('keydown', keyPress);
+document.addEventListener('dblclick', () => body.style.background = 'lightgreen');
+body.addEventListener('click', () => body.style.background = 'orange');
+navLinks.forEach(item => item.addEventListener('click', (event) => event.preventDefault()));
+textInput.addEventListener('focus', inputFocus);
+textInput.addEventListener('blur', inputBlur);
+
