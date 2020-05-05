@@ -1,4 +1,7 @@
 // Your code goes here
+
+
+
 const qs = (selector) => {
     return document.querySelector(selector);
 }
@@ -20,6 +23,7 @@ const textInput = qs('#text-input');
 const borderToggle = (event) => {
     event.stopPropagation();
     event.target.classList.toggle('border-toggle');
+    gsap.from(event.target, {rotation: 360, duration: .5});
 }
 
 const headerBackground = (event) => {
@@ -90,4 +94,6 @@ body.addEventListener('click', () => body.style.background = 'orange');
 navLinks.forEach(item => item.addEventListener('click', (event) => event.preventDefault()));
 textInput.addEventListener('focus', inputFocus);
 textInput.addEventListener('blur', inputBlur);
+
+//gsap animations
 
