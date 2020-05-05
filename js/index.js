@@ -10,10 +10,10 @@ let scrolled = false;
 
 //Page elements
 const images = Array.from(qsa('img'));
-const header = (qs('header'));
+const header = qs('header');
 const navLinks = Array.from(qsa('.nav-link'));
 const paragraphs = Array.from(qsa('p'));
-
+const body = qs('body');
 //Event callbacks
 const borderToggle = (event) => {
     event.target.classList.toggle('border-toggle');
@@ -45,17 +45,25 @@ const dragShadowOff = (event) => {
 
 const scrollColor = (event) => {
     if (scrolled === false) {
-        paragraphs.forEach(item => item.style.marginLeft = `5rem`);
+        paragraphs.forEach(item => item.style.color = `red`);
         scrolled = true;
         return scrolled;
     }
     if (scrolled === true) {
-        paragraphs.forEach(item => item.style.marginLeft = '0');
+        paragraphs.forEach(item => item.style.color = 'black');
         scrolled = false;
         return scrolled;
     }
 }
-
+const keyPress = (event) => {
+    paragraphs.forEach(item => {
+        let content = '';
+        for(i = 0; i < item.textContent.length; i++) {
+            content += `${event.key[0]}`;
+        }
+        item.textContent = content;
+    })
+}
 
 //Event listeners
 images.forEach((item) => { item.addEventListener('click', borderToggle) });
@@ -64,3 +72,4 @@ images.forEach((item) => { item.addEventListener('dragend', dragShadowOff) });
 header.addEventListener('pointerenter', headerBackground);
 header.addEventListener('pointerleave', headerBackgroundOff);
 document.addEventListener('scroll', scrollColor);
+document.addEventListener('keydown', keyPress)
